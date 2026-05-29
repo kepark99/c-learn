@@ -8,15 +8,14 @@
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body { font-family: 'Pretendard', 'Apple SD Gothic Neo', sans-serif; background: #f8fafc; min-height: 100vh; }
 
-  /* 헤더 */
   header { background: linear-gradient(135deg, #1e40af 0%, #7c3aed 100%); padding: 18px 24px; display: flex; align-items: center; justify-content: space-between; }
   header h1 { color: #fff; font-size: 22px; font-weight: 800; }
   header p  { color: #bfdbfe; font-size: 13px; margin-top: 2px; }
-  #btn-home { display: none; background: rgba(255,255,255,0.15); border: 1.5px solid rgba(255,255,255,0.3); border-radius: 8px; color: #fff; padding: 6px 14px; cursor: pointer; font-size: 13px; }
+  .header-btns { display: flex; gap: 8px; }
+  .btn-header { background: rgba(255,255,255,0.15); border: 1.5px solid rgba(255,255,255,0.3); border-radius: 8px; color: #fff; padding: 6px 14px; cursor: pointer; font-size: 13px; }
 
   main { padding: 28px 20px; max-width: 660px; margin: 0 auto; }
 
-  /* 공통 버튼 */
   .btn { border: none; border-radius: 8px; color: #fff; font-weight: 600; cursor: pointer; transition: opacity .15s; }
   .btn:disabled { background: #d1d5db !important; cursor: not-allowed; }
   .btn-primary  { background: #2563eb; }
@@ -25,10 +24,11 @@
   .btn-indigo   { background: #6366f1; }
   .btn-red      { background: #ef4444; }
   .btn-purple   { background: #7c3aed; }
+  .btn-orange   { background: #f97316; }
   .btn-full     { width: 100%; padding: 11px 0; font-size: 15px; margin-top: 12px; }
   .btn-sm       { padding: 8px 18px; font-size: 14px; margin-top: 4px; }
 
-  /* API 키 입력 화면 */
+  /* API 키 */
   #screen-apikey { max-width: 480px; margin: 0 auto; }
   .apikey-box { background: #eff6ff; border: 1.5px solid #bfdbfe; border-radius: 12px; padding: 28px 24px; }
   .apikey-box h2 { color: #1e40af; margin-bottom: 8px; }
@@ -45,7 +45,7 @@
   .topic-btn:hover { border-color: #6366f1; background: #eef2ff; }
   .topic-coming { background: #f9fafb; border: 1.5px dashed #d1d5db; border-radius: 10px; padding: 12px 14px; font-weight: 600; font-size: 14px; color: #9ca3af; display: flex; align-items: center; gap: 8px; }
   .coming-label { font-size: 12px; color: #9ca3af; font-weight: 600; margin-bottom: 8px; }
-  .custom-box { background: #f8fafc; border: 1.5px solid #e2e8f0; border-radius: 12px; padding: 18px; }
+  .custom-box { background: #f8fafc; border: 1.5px solid #e2e8f0; border-radius: 12px; padding: 18px; margin-top: 16px; }
   .custom-box p { font-weight: 700; color: #475569; font-size: 14px; margin-bottom: 10px; }
   .custom-row { display: flex; gap: 8px; }
   .custom-row input { flex: 1; border: 1.5px solid #cbd5e1; border-radius: 8px; padding: 9px 12px; font-size: 14px; outline: none; }
@@ -65,11 +65,9 @@
   .level-medium.active { background: #ca8a04; color: #fff; }
   .level-hard.active   { background: #dc2626; color: #fff; }
 
-  /* 로딩 */
   .loading { text-align: center; padding: 40px; color: #6b7280; font-size: 16px; }
   .loading .icon { font-size: 32px; margin-bottom: 12px; }
 
-  /* 문제 카드 */
   .prob-card { background: #fff; border: 1.5px solid #e5e7eb; border-radius: 12px; padding: 20px; }
   .prob-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
   .prob-title { font-size: 17px; font-weight: 700; color: #111827; }
@@ -78,13 +76,11 @@
   .example-box { background: #f9fafb; border-radius: 8px; padding: 8px 12px; font-size: 13px; margin-bottom: 8px; }
   .example-box pre { margin: 4px 0 0; font-family: monospace; white-space: pre-wrap; }
 
-  /* 코드 에디터 */
   .editor-label { font-weight: 600; color: #374151; display: block; margin: 16px 0 6px; }
   #code-editor { width: 100%; min-height: 200px; background: #1e1e2e; color: #cdd6f4; font-family: 'Fira Mono', 'Consolas', monospace; font-size: 14px; border: 1.5px solid #45475a; border-radius: 8px; padding: 12px 14px; resize: vertical; outline: none; line-height: 1.6; white-space: pre; overflow-wrap: normal; overflow-x: auto; }
   .action-row { display: flex; gap: 10px; margin-top: 12px; }
   .action-row .btn { flex: 1; padding: 11px 0; font-size: 15px; }
 
-  /* 실행 결과 */
   .run-result { margin-top: 14px; border-radius: 8px; padding: 12px 16px; }
   .run-result.success { background: #f0f9ff; border: 1.5px solid #7dd3fc; }
   .run-result.error   { background: #fef2f2; border: 1.5px solid #fca5a5; }
@@ -95,19 +91,16 @@
   .run-result.success pre { color: #a6e3a1; }
   .run-result.error   pre { color: #f38ba8; }
 
-  /* 피드백 */
   .feedback-box { margin-top: 16px; border-radius: 8px; padding: 12px 16px; }
   .feedback-correct { background: #f0fdf4; border: 1.5px solid #86efac; }
   .feedback-wrong   { background: #fff7ed; border: 1.5px solid #fed7aa; }
-  .feedback-box .fb-title { font-weight: 700; font-size: 15px; margin-bottom: 6px; }
+  .fb-title { font-weight: 700; font-size: 15px; margin-bottom: 6px; }
   .feedback-correct .fb-title { color: #16a34a; }
   .feedback-wrong   .fb-title { color: #c2410c; }
   .feedback-box p { font-size: 14px; line-height: 1.6; }
   .feedback-correct p { color: #166534; }
   .feedback-wrong   p { color: #9a3412; }
 
-  /* 힌트 */
-  .hint-box { margin-top: 8px; }
   .hint-item { border-radius: 8px; padding: 10px 14px; margin-bottom: 8px; }
   .hint-1 { background: #fffbeb; border: 1.5px solid #fcd34d; }
   .hint-2 { background: #fff7ed; border: 1.5px solid #fb923c; }
@@ -118,12 +111,40 @@
   .hint-3 strong { color: #b91c1c; }
   .hint-item p { font-size: 14px; color: #374151; }
 
-  /* 정답 해설 */
   .answer-box { margin-top: 16px; background: #faf5ff; border: 1.5px solid #d8b4fe; border-radius: 8px; padding: 14px 16px; }
   .answer-box h4 { font-weight: 700; color: #7c3aed; margin-bottom: 10px; }
   .answer-box pre { background: #1e1e2e; color: #cdd6f4; border-radius: 8px; padding: 14px; font-size: 13px; overflow-x: auto; white-space: pre-wrap; margin-bottom: 12px; }
 
-  .next-btn-wrap { margin-top: 12px; }
+  /* 오답 노트 화면 */
+  #screen-wrongnote { max-width: 660px; margin: 0 auto; }
+  .wrongnote-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+  .wrongnote-header h2 { font-size: 20px; font-weight: 800; color: #1e293b; }
+  .wrongnote-empty { text-align: center; padding: 60px 20px; color: #9ca3af; }
+  .wrongnote-empty .icon { font-size: 48px; margin-bottom: 12px; }
+  .wrong-item { background: #fff; border: 1.5px solid #e5e7eb; border-radius: 12px; padding: 18px; margin-bottom: 16px; }
+  .wrong-item-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 10px; gap: 10px; }
+  .wrong-item-title { font-weight: 700; color: #111827; font-size: 15px; }
+  .wrong-meta { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 10px; }
+  .tag { font-size: 11px; font-weight: 600; padding: 3px 8px; border-radius: 20px; }
+  .tag-topic  { background: #eff6ff; color: #1e40af; }
+  .tag-easy   { background: #dcfce7; color: #166534; }
+  .tag-medium { background: #fef9c3; color: #854d0e; }
+  .tag-hard   { background: #fee2e2; color: #991b1b; }
+  .tag-date   { background: #f3f4f6; color: #6b7280; }
+  .wrong-section { margin-top: 10px; }
+  .wrong-section-title { font-size: 12px; font-weight: 700; color: #6b7280; margin-bottom: 6px; text-transform: uppercase; }
+  .wrong-code { background: #1e1e2e; color: #cdd6f4; border-radius: 8px; padding: 12px 14px; font-family: 'Fira Mono','Consolas',monospace; font-size: 13px; white-space: pre-wrap; overflow-x: auto; }
+  .wrong-answer { background: #faf5ff; border: 1.5px solid #d8b4fe; border-radius: 8px; padding: 12px 14px; font-size: 13px; color: #374151; white-space: pre-wrap; }
+  .wrong-desc { font-size: 14px; color: #374151; line-height: 1.7; }
+  .toggle-btn { background: none; border: 1.5px solid #e5e7eb; border-radius: 6px; color: #6b7280; padding: 4px 10px; cursor: pointer; font-size: 12px; font-weight: 600; white-space: nowrap; }
+  .toggle-btn:hover { border-color: #6366f1; color: #6366f1; }
+  .btn-delete { background: none; border: 1.5px solid #fca5a5; border-radius: 6px; color: #ef4444; padding: 4px 10px; cursor: pointer; font-size: 12px; font-weight: 600; }
+  .btn-delete:hover { background: #fef2f2; }
+  .wrongnote-actions { display: flex; gap: 8px; }
+  .stats-bar { background: #fff; border: 1.5px solid #e5e7eb; border-radius: 10px; padding: 14px 18px; margin-bottom: 20px; display: flex; gap: 24px; }
+  .stat-item { text-align: center; }
+  .stat-num { font-size: 22px; font-weight: 800; color: #1e40af; }
+  .stat-label { font-size: 12px; color: #6b7280; margin-top: 2px; }
 </style>
 </head>
 <body>
@@ -133,7 +154,10 @@
     <h1>💻 C-Learn</h1>
     <p>C언어 복습 문제 풀이 플랫폼</p>
   </div>
-  <button id="btn-home">← 처음으로</button>
+  <div class="header-btns">
+    <button class="btn-header" id="btn-wrongnote" style="display:none">📒 오답노트</button>
+    <button class="btn-header" id="btn-home" style="display:none">← 처음으로</button>
+  </div>
 </header>
 
 <main>
@@ -141,35 +165,30 @@
   <div id="screen-apikey">
     <div class="apikey-box">
       <h2>🔑 Gemini API 키 입력</h2>
-      <p>이 앱은 Google Gemini AI를 사용합니다.<br>
-        선생님이 발급받은 API 키를 아래에 입력해주세요.<br>
-        학생들은 이 키를 알 필요가 없습니다.</p>
+      <p>이 앱은 Google Gemini AI를 사용합니다.<br>선생님이 발급받은 API 키를 아래에 입력해주세요.</p>
       <input type="password" id="input-apikey" placeholder="AIza..." />
       <button class="btn btn-primary btn-full" id="btn-apikey-confirm">시작하기</button>
-      <p class="apikey-hint">
-        API 키가 없으신가요?
-        <a href="https://aistudio.google.com/apikey" target="_blank">Google AI Studio</a>에서 무료로 발급받으세요.
-      </p>
+      <p class="apikey-hint">API 키가 없으신가요? <a href="https://aistudio.google.com/apikey" target="_blank">Google AI Studio</a>에서 무료로 발급받으세요.</p>
     </div>
   </div>
 
   <!-- ② 주제 선택 -->
-  <div id="screen-topic" style="display:none;">
+  <div id="screen-topic" style="display:none">
     <p class="topic-intro">오늘 복습하고 싶은 주제를 선택하거나 직접 입력해보세요!</p>
     <div class="topic-grid" id="topic-grid"></div>
     <p class="coming-label">🔒 추후 추가 예정</p>
     <div class="topic-grid" id="topic-coming-grid"></div>
-    <div class="custom-box" style="margin-top:16px;">
+    <div class="custom-box">
       <p>✏️ 모르는 부분을 직접 입력하기</p>
       <div class="custom-row">
-        <input type="text" id="input-custom" placeholder="예) 재귀함수가 헷갈려요, 포인터 연산 복습하고 싶어요..." />
+        <input type="text" id="input-custom" placeholder="예) 재귀함수가 헷갈려요..." />
         <button class="btn btn-indigo btn-sm" id="btn-custom">문제 받기</button>
       </div>
     </div>
   </div>
 
   <!-- ③ 문제 풀기 -->
-  <div id="screen-problem" style="display:none;">
+  <div id="screen-problem" style="display:none">
     <div class="topic-badge">
       <span>📖 복습 주제: <em id="badge-topic"></em></span>
       <button class="btn-back" id="btn-change-topic">← 주제 바꾸기</button>
@@ -181,65 +200,90 @@
     </div>
     <div id="prob-area"></div>
   </div>
+
+  <!-- ④ 오답 노트 -->
+  <div id="screen-wrongnote" style="display:none">
+    <div class="wrongnote-header">
+      <h2>📒 오답 노트</h2>
+      <button class="btn btn-red btn-sm" id="btn-clear-all">전체 삭제</button>
+    </div>
+    <div id="stats-area"></div>
+    <div id="wrongnote-list"></div>
+  </div>
 </main>
 
 <script>
-// ── 데이터 ────────────────────────────────────────────────
 const TOPICS = [
-  { emoji:"📦", name:"변수와 자료형" },
-  { emoji:"➗", name:"연산자" },
-  { emoji:"🔀", name:"조건문 (if/switch)" },
-  { emoji:"🔁", name:"반복문 (for/while)" },
-  { emoji:"📋", name:"배열" },
-  { emoji:"🧩", name:"함수" },
+  {emoji:"📦",name:"변수와 자료형"},{emoji:"➗",name:"연산자"},
+  {emoji:"🔀",name:"조건문 (if/switch)"},{emoji:"🔁",name:"반복문 (for/while)"},
+  {emoji:"📋",name:"배열"},{emoji:"🧩",name:"함수"},
 ];
 const TOPICS_COMING = [
-  { emoji:"🔤", name:"문자열" },
-  { emoji:"👉", name:"포인터" },
-  { emoji:"🏗️", name:"구조체" },
-  { emoji:"📂", name:"파일 입출력" },
+  {emoji:"🔤",name:"문자열"},{emoji:"👉",name:"포인터"},
+  {emoji:"🏗️",name:"구조체"},{emoji:"📂",name:"파일 입출력"},
 ];
 const LEVELS = ["쉬움","보통","어려움"];
+const LEVEL_TAGS = ["tag-easy","tag-medium","tag-hard"];
 const DEFAULT_CODE = `#include <stdio.h>\n\nint main() {\n    // 여기에 코드를 작성하세요\n    \n    return 0;\n}`;
+const STORAGE_KEY = "clearn_wrong_notes";
 
-// ── 상태 ─────────────────────────────────────────────────
-let apiKey = "";
-let currentTopic = "";
-let currentLevel = -1;
-let currentProb = null;
-let probCount = 0;
-let prevTitles = [];
-let hints = [];
-let correctFlag = null;
+let apiKey = "", currentTopic = "", currentLevel = -1;
+let currentProb = null, probCount = 0, prevTitles = [], hints = [];
 
-// ── Gemini API 호출 ──────────────────────────────────────
+// ── 오답 노트 저장소 ─────────────────────────────────────
+function loadNotes() {
+  try { return JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]"); }
+  catch { return []; }
+}
+function saveNotes(notes) {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(notes));
+}
+function addNote(prob, myCode, answerText) {
+  const notes = loadNotes();
+  notes.unshift({
+    id: Date.now(),
+    topic: currentTopic,
+    level: LEVELS[currentLevel],
+    levelIdx: currentLevel,
+    title: prob.title,
+    description: prob.description,
+    example_output: prob.example_output,
+    myCode,
+    answer: answerText,
+    date: new Date().toLocaleDateString("ko-KR"),
+  });
+  saveNotes(notes);
+}
+
+// ── Gemini API ───────────────────────────────────────────
 async function callGemini(prompt) {
   const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent?key=${apiKey}`;
   const res = await fetch(url, {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ contents: [{ parts: [{ text: prompt }] }] })
+    headers: {"Content-Type":"application/json"},
+    body: JSON.stringify({contents:[{parts:[{text:prompt}]}]})
   });
   const d = await res.json();
   if (d.error) throw new Error(d.error.message);
   return d.candidates?.[0]?.content?.parts?.[0]?.text || "";
 }
-
 function parseJSON(text) {
-  return JSON.parse(text.replace(/```json|```/g, "").trim());
+  return JSON.parse(text.replace(/```json|```/g,"").trim());
 }
 
 // ── 화면 전환 ─────────────────────────────────────────────
 function showScreen(id) {
-  ["screen-apikey","screen-topic","screen-problem"].forEach(s => {
+  ["screen-apikey","screen-topic","screen-problem","screen-wrongnote"].forEach(s => {
     document.getElementById(s).style.display = s === id ? "block" : "none";
   });
   document.getElementById("btn-home").style.display = id === "screen-apikey" ? "none" : "inline-block";
+  document.getElementById("btn-wrongnote").style.display = id === "screen-apikey" ? "none" : "inline-block";
 }
 
-// ── 주제 목록 렌더 ────────────────────────────────────────
+// ── 주제 목록 ─────────────────────────────────────────────
 function renderTopics() {
   const g = document.getElementById("topic-grid");
+  if (g.children.length) return;
   TOPICS.forEach(t => {
     const b = document.createElement("button");
     b.className = "topic-btn";
@@ -256,12 +300,8 @@ function renderTopics() {
   });
 }
 
-// ── 주제 시작 ─────────────────────────────────────────────
 function startTopic(topic) {
-  currentTopic = topic;
-  currentLevel = -1;
-  prevTitles = [];
-  probCount = 0;
+  currentTopic = topic; currentLevel = -1; prevTitles = []; probCount = 0;
   document.getElementById("badge-topic").textContent = topic;
   document.querySelectorAll(".level-btn").forEach(b => b.classList.remove("active"));
   document.getElementById("prob-area").innerHTML = "";
@@ -271,23 +311,16 @@ function startTopic(topic) {
 // ── 문제 생성 ─────────────────────────────────────────────
 async function generateProblem() {
   document.getElementById("prob-area").innerHTML = `<div class="loading"><div class="icon">⏳</div>AI가 새 문제를 생성하고 있어요...</div>`;
-  correctFlag = null; hints = [];
-
+  hints = [];
   const prompt = `당신은 고등학교 1학년 C언어 교육 전문가입니다.
-복습 주제: ${currentTopic}
-난이도: ${LEVELS[currentLevel]}
-이전 출제 문제: ${prevTitles.length ? prevTitles.join(", ") : "없음"} — 반드시 다른 문제를 출제하세요.
-
-규칙:
-- description과 example_output은 반드시 일치해야 합니다.
-- example_output에서 줄바꿈은 \\n으로 표현하세요.
-
-아래 JSON만 출력 (다른 텍스트 없이):
+복습 주제: ${currentTopic} / 난이도: ${LEVELS[currentLevel]}
+이전 출제: ${prevTitles.length ? prevTitles.join(", ") : "없음"} — 반드시 다른 문제를 출제하세요.
+규칙: description과 example_output은 반드시 일치. 줄바꿈은 \\n.
+아래 JSON만 출력:
 {"title":"문제제목","description":"문제설명","example_input":"예시입력(없으면 빈문자열)","example_output":"예시출력"}`;
-
   try {
-    const text = await callGemini(prompt);
-    currentProb = parseJSON(text);
+    const t = await callGemini(prompt);
+    currentProb = parseJSON(t);
     prevTitles.push(currentProb.title);
     probCount++;
     renderProblem();
@@ -301,7 +334,6 @@ function renderProblem() {
   const p = currentProb;
   const exIn  = p.example_input  ? `<div class="example-box"><b>입력 예시:</b> <code>${p.example_input}</code></div>` : "";
   const exOut = p.example_output ? `<div class="example-box"><b>출력 예시:</b><pre>${p.example_output.replace(/\\n/g,"\n")}</pre></div>` : "";
-
   document.getElementById("prob-area").innerHTML = `
     <div class="prob-card">
       <div class="prob-header">
@@ -322,16 +354,13 @@ function renderProblem() {
       <div id="answer-area"></div>
     </div>`;
 
-  // Tab 키
   document.getElementById("code-editor").addEventListener("keydown", e => {
-    if (e.key === "Tab") {
-      e.preventDefault();
-      const el = e.target, s = el.selectionStart, en = el.selectionEnd;
-      el.value = el.value.substring(0,s) + "    " + el.value.substring(en);
-      el.selectionStart = el.selectionEnd = s + 4;
-    }
+    if (e.key !== "Tab") return;
+    e.preventDefault();
+    const el = e.target, s = el.selectionStart, en = el.selectionEnd;
+    el.value = el.value.substring(0,s) + "    " + el.value.substring(en);
+    el.selectionStart = el.selectionEnd = s + 4;
   });
-
   document.getElementById("btn-run").onclick = handleRun;
   document.getElementById("btn-submit").onclick = handleSubmit;
 }
@@ -341,22 +370,14 @@ async function handleRun() {
   const code = document.getElementById("code-editor").value;
   const btn = document.getElementById("btn-run");
   btn.disabled = true; btn.textContent = "⏳ 실행 중...";
-
-  const prompt = `당신은 C언어 인터프리터입니다. 주어진 C 코드의 실행 결과를 시뮬레이션하세요.
-컴파일 오류가 있으면 오류 메시지를, 정상이면 출력 결과만 반환하세요.
-반드시 JSON만 출력:
-{"status":"success"또는"error","output":"실행결과또는오류메시지"}
-
-코드:
-${code}
-입력값(있다면): ${currentProb.example_input}`;
-
+  const prompt = `당신은 C언어 인터프리터입니다. 실행 결과를 시뮬레이션하세요.
+반드시 JSON만 출력: {"status":"success"또는"error","output":"결과"}
+코드:\n${code}\n입력값: ${currentProb.example_input}`;
   try {
-    const text = await callGemini(prompt);
-    const r = parseJSON(text);
+    const r = parseJSON(await callGemini(prompt));
     document.getElementById("run-result-area").innerHTML = `
       <div class="run-result ${r.status}">
-        <p>${r.status === "success" ? "▶ 실행 결과 (AI 시뮬레이션)" : "⚠️ 컴파일/런타임 오류"}</p>
+        <p>${r.status==="success" ? "▶ 실행 결과 (AI 시뮬레이션)" : "⚠️ 컴파일/런타임 오류"}</p>
         <pre>${r.output.replace(/\\n/g,"\n")}</pre>
       </div>`;
   } catch(e) {
@@ -372,29 +393,20 @@ async function handleSubmit() {
   btn.disabled = true; btn.textContent = "⏳ 채점 중...";
   document.getElementById("hint-area").innerHTML = "";
   document.getElementById("answer-area").innerHTML = "";
-
-  const prompt = `당신은 C언어 교육 전문가입니다. 고등학교 1학년 학생 코드를 평가합니다.
-반드시 JSON만 출력:
-{"correct":true또는false,"feedback":"정답이면 칭찬(1~2문장), 오답이면 격려(1~2문장)"}
-
-문제: ${currentProb.description}
-예시출력: ${currentProb.example_output}
-학생 코드:
-${code}`;
-
+  const prompt = `C언어 교육 전문가. 고1 학생 코드 평가.
+JSON만 출력: {"correct":true또는false,"feedback":"칭찬 또는 격려(1~2문장)"}
+문제: ${currentProb.description}\n예시출력: ${currentProb.example_output}\n학생 코드:\n${code}`;
   try {
-    const text = await callGemini(prompt);
-    const r = parseJSON(text);
-    correctFlag = r.correct;
+    const r = parseJSON(await callGemini(prompt));
     const fb = document.getElementById("feedback-area");
     if (r.correct) {
       fb.innerHTML = `
         <div class="feedback-box feedback-correct">
           <div class="fb-title">🎉 정답입니다!</div>
           <p>${r.feedback}</p>
-          <div class="next-btn-wrap"><button class="btn btn-green btn-sm" id="btn-next">다음 문제 →</button></div>
+          <div style="margin-top:12px"><button class="btn btn-green btn-sm" id="btn-next">다음 문제 →</button></div>
         </div>`;
-      document.getElementById("btn-next").onclick = () => generateProblem();
+      document.getElementById("btn-next").onclick = generateProblem;
     } else {
       fb.innerHTML = `
         <div class="feedback-box feedback-wrong">
@@ -413,95 +425,156 @@ ${code}`;
 async function fetchHint(step) {
   const code = document.getElementById("code-editor").value;
   const hintArea = document.getElementById("hint-area");
-
-  // 힌트 요청 버튼 제거
-  const oldBtn = document.getElementById("btn-hint-next");
-  if (oldBtn) oldBtn.remove();
-
-  const loadingId = "hint-loading-" + step;
-  hintArea.insertAdjacentHTML("beforeend", `<p id="${loadingId}" style="color:#6b7280;font-size:14px;margin-top:8px">💡 힌트 ${step}단계 불러오는 중...</p>`);
-
-  const prompt = `당신은 C언어 교육 전문가입니다. 고등학교 1학년 학생에게 한국어로 힌트를 줍니다.
-힌트 ${step}단계를 한 문장으로 작성하세요.
-- 1단계: 문제 방향만 제시 (정답 언급 금지)
-- 2단계: 조금 더 구체적인 힌트 (코드 예시 없이)
-- 3단계: 거의 정답에 가까운 힌트 (짧은 코드 조각 가능)
-힌트 텍스트만 출력하세요.
-
-문제: ${currentProb.description}
-학생 코드: ${code}
-이전 힌트: ${hints.join(" / ")}`;
-
+  document.getElementById("btn-hint-next")?.remove();
+  const lid = "hl-"+step;
+  hintArea.insertAdjacentHTML("beforeend", `<p id="${lid}" style="color:#6b7280;font-size:14px;margin-top:8px">💡 힌트 ${step}단계 불러오는 중...</p>`);
+  const prompt = `C언어 교육 전문가. 고1 학생에게 한국어 힌트 ${step}단계 한 문장.
+1단계:방향만, 2단계:구체적, 3단계:거의정답(코드조각가능). 힌트 텍스트만 출력.
+문제: ${currentProb.description}\n학생 코드: ${code}\n이전 힌트: ${hints.join(" / ")}`;
   try {
     const h = (await callGemini(prompt)).trim();
     hints.push(h);
-    document.getElementById(loadingId)?.remove();
-
+    document.getElementById(lid)?.remove();
     const cls = ["hint-1","hint-2","hint-3"][step-1];
-    const labels = ["#b45309","#c2410c","#b91c1c"];
+    const clr = ["#b45309","#c2410c","#b91c1c"][step-1];
     hintArea.insertAdjacentHTML("beforeend", `
       <div class="hint-item ${cls}">
-        <strong style="color:${labels[step-1]}">💡 힌트 ${step}단계</strong>
+        <strong style="color:${clr}">💡 힌트 ${step}단계</strong>
         <p>${h}</p>
       </div>`);
-
     if (step < 3) {
       hintArea.insertAdjacentHTML("beforeend",
-        `<button class="btn btn-indigo btn-sm" id="btn-hint-next" style="margin-top:4px">힌트 ${step+1}단계 보기</button>`);
+        `<button class="btn btn-indigo btn-sm" id="btn-hint-next">힌트 ${step+1}단계 보기</button>`);
       document.getElementById("btn-hint-next").onclick = () => fetchHint(step+1);
     } else {
       hintArea.insertAdjacentHTML("beforeend",
-        `<button class="btn btn-red btn-sm" id="btn-show-answer" style="margin-top:4px">정답 보기</button>`);
+        `<button class="btn btn-red btn-sm" id="btn-show-answer">정답 보기</button>`);
       document.getElementById("btn-show-answer").onclick = showAnswer;
     }
   } catch(e) {
-    document.getElementById(loadingId)?.remove();
+    document.getElementById(lid)?.remove();
     hintArea.insertAdjacentHTML("beforeend", `<p style="color:red">힌트 오류: ${e.message}</p>`);
   }
 }
 
-// ── 정답 보기 ─────────────────────────────────────────────
+// ── 정답 보기 + 오답 노트 자동 저장 ─────────────────────
 async function showAnswer() {
   const btn = document.getElementById("btn-show-answer");
+  const myCode = document.getElementById("code-editor").value;
   if (btn) { btn.disabled = true; btn.textContent = "불러오는 중..."; }
-
-  const prompt = `당신은 C언어 교육 전문가입니다. 정답 코드와 설명을 한국어로 제공하세요.
-형식:
-정답 코드:
-\`\`\`c
-(코드)
-\`\`\`
-설명: (2~3문장)
-
-문제: ${currentProb.description}
-예시출력: ${currentProb.example_output}`;
-
+  const prompt = `C언어 교육 전문가. 정답 코드와 설명을 한국어로.
+형식:\n정답 코드:\n\`\`\`c\n(코드)\n\`\`\`\n설명: (2~3문장)
+문제: ${currentProb.description}\n예시출력: ${currentProb.example_output}`;
   try {
     const a = (await callGemini(prompt)).trim();
+    // 오답 노트 자동 저장
+    addNote(currentProb, myCode, a);
+
     document.getElementById("answer-area").innerHTML = `
       <div class="answer-box">
         <h4>📖 정답 및 해설</h4>
         <pre>${a}</pre>
-        <button class="btn btn-purple btn-sm" id="btn-next-from-answer">다음 문제 →</button>
+        <div style="display:flex;gap:8px;flex-wrap:wrap">
+          <button class="btn btn-purple btn-sm" id="btn-next-ans">다음 문제 →</button>
+          <button class="btn btn-orange btn-sm" id="btn-go-note">📒 오답노트 확인</button>
+        </div>
       </div>`;
-    document.getElementById("btn-next-from-answer").onclick = () => generateProblem();
+    document.getElementById("btn-next-ans").onclick = generateProblem;
+    document.getElementById("btn-go-note").onclick = renderWrongNote;
+
+    // 헤더 오답노트 버튼 강조
+    const nb = document.getElementById("btn-wrongnote");
+    nb.textContent = `📒 오답노트 (${loadNotes().length})`;
   } catch(e) {
-    document.getElementById("answer-area").innerHTML = `<p style="color:red">정답 로드 오류: ${e.message}</p>`;
+    document.getElementById("answer-area").innerHTML = `<p style="color:red">정답 오류: ${e.message}</p>`;
   }
 }
 
-// ── 이벤트 바인딩 ─────────────────────────────────────────
+// ── 오답 노트 렌더 ────────────────────────────────────────
+function renderWrongNote() {
+  showScreen("screen-wrongnote");
+  const notes = loadNotes();
+
+  // 통계
+  const statsEl = document.getElementById("stats-area");
+  if (notes.length) {
+    const byLevel = [0,0,0];
+    notes.forEach(n => byLevel[n.levelIdx] = (byLevel[n.levelIdx]||0)+1);
+    statsEl.innerHTML = `
+      <div class="stats-bar">
+        <div class="stat-item"><div class="stat-num">${notes.length}</div><div class="stat-label">총 오답</div></div>
+        <div class="stat-item"><div class="stat-num" style="color:#16a34a">${byLevel[0]}</div><div class="stat-label">쉬움</div></div>
+        <div class="stat-item"><div class="stat-num" style="color:#ca8a04">${byLevel[1]}</div><div class="stat-label">보통</div></div>
+        <div class="stat-item"><div class="stat-num" style="color:#dc2626">${byLevel[2]}</div><div class="stat-label">어려움</div></div>
+      </div>`;
+  } else statsEl.innerHTML = "";
+
+  const listEl = document.getElementById("wrongnote-list");
+  if (!notes.length) {
+    listEl.innerHTML = `<div class="wrongnote-empty"><div class="icon">📭</div><p>아직 오답 기록이 없어요!</p><p style="font-size:13px;margin-top:6px">문제를 풀고 정답을 확인하면 자동으로 저장됩니다.</p></div>`;
+    return;
+  }
+
+  listEl.innerHTML = notes.map((n,i) => `
+    <div class="wrong-item" id="note-${n.id}">
+      <div class="wrong-item-header">
+        <span class="wrong-item-title">📝 ${n.title}</span>
+        <div class="wrongnote-actions">
+          <button class="toggle-btn" onclick="toggleDetail(${n.id})">상세 보기 ▾</button>
+          <button class="btn-delete" onclick="deleteNote(${n.id})">삭제</button>
+        </div>
+      </div>
+      <div class="wrong-meta">
+        <span class="tag tag-topic">${n.topic}</span>
+        <span class="tag ${LEVEL_TAGS[n.levelIdx]}">${n.level}</span>
+        <span class="tag tag-date">${n.date}</span>
+      </div>
+      <p class="wrong-desc">${n.description}</p>
+      <div id="detail-${n.id}" style="display:none">
+        <div class="wrong-section" style="margin-top:12px">
+          <div class="wrong-section-title">내가 작성한 코드</div>
+          <pre class="wrong-code">${escHtml(n.myCode)}</pre>
+        </div>
+        <div class="wrong-section" style="margin-top:12px">
+          <div class="wrong-section-title">정답 및 해설</div>
+          <pre class="wrong-answer">${escHtml(n.answer)}</pre>
+        </div>
+      </div>
+    </div>`).join("");
+
+  // 오답노트 버튼 카운트 업데이트
+  document.getElementById("btn-wrongnote").textContent = `📒 오답노트 (${notes.length})`;
+}
+
+function toggleDetail(id) {
+  const el = document.getElementById("detail-"+id);
+  const btn = el.previousElementSibling.querySelector(".toggle-btn");
+  if (el.style.display === "none") { el.style.display = "block"; btn.textContent = "접기 ▴"; }
+  else { el.style.display = "none"; btn.textContent = "상세 보기 ▾"; }
+}
+
+function deleteNote(id) {
+  if (!confirm("이 오답 기록을 삭제할까요?")) return;
+  saveNotes(loadNotes().filter(n => n.id !== id));
+  renderWrongNote();
+}
+
+function escHtml(s) {
+  return s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+}
+
+// ── 이벤트 ───────────────────────────────────────────────
 document.getElementById("btn-apikey-confirm").onclick = () => {
   const key = document.getElementById("input-apikey").value.trim();
   if (!key) return alert("API 키를 입력해주세요.");
   apiKey = key;
   renderTopics();
   showScreen("screen-topic");
+  document.getElementById("btn-wrongnote").textContent = `📒 오답노트 (${loadNotes().length})`;
 };
 document.getElementById("input-apikey").addEventListener("keydown", e => {
   if (e.key === "Enter") document.getElementById("btn-apikey-confirm").click();
 });
-
 document.getElementById("btn-custom").onclick = () => {
   const v = document.getElementById("input-custom").value.trim();
   if (v) startTopic(v);
@@ -509,14 +582,17 @@ document.getElementById("btn-custom").onclick = () => {
 document.getElementById("input-custom").addEventListener("keydown", e => {
   if (e.key === "Enter") document.getElementById("btn-custom").click();
 });
-
 document.getElementById("btn-home").onclick = () => showScreen("screen-topic");
-document.getElementById("btn-change-topic").onclick = () => showScreen("screen-topic"); // 이 요소는 동적 생성
-
+document.getElementById("btn-wrongnote").onclick = renderWrongNote;
+document.getElementById("btn-clear-all").onclick = () => {
+  if (!confirm("오답 노트를 모두 삭제할까요?")) return;
+  saveNotes([]);
+  renderWrongNote();
+  document.getElementById("btn-wrongnote").textContent = "📒 오답노트 (0)";
+};
 document.querySelectorAll(".level-btn").forEach(btn => {
   btn.addEventListener("click", () => {
-    const lvl = parseInt(btn.dataset.level);
-    currentLevel = lvl;
+    currentLevel = parseInt(btn.dataset.level);
     document.querySelectorAll(".level-btn").forEach(b => b.classList.remove("active"));
     btn.classList.add("active");
     generateProblem();
