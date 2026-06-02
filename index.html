@@ -68,18 +68,36 @@
   .loading { text-align: center; padding: 40px; color: #6b7280; font-size: 16px; }
   .loading .icon { font-size: 32px; margin-bottom: 12px; }
 
+  /* 문제 카드 - 반응형 2단 레이아웃 */
   .prob-card { background: #fff; border: 1.5px solid #e5e7eb; border-radius: 12px; padding: 20px; }
   .prob-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
   .prob-title { font-size: 17px; font-weight: 700; color: #111827; }
-  .prob-count { font-size: 12px; color: #9ca3af; background: #f3f4f6; border-radius: 20px; padding: 3px 10px; }
+  .prob-count { font-size: 12px; color: #9ca3af; background: #f3f4f6; border-radius: 20px; padding: 3px 10px; white-space: nowrap; }
   .prob-desc { color: #374151; line-height: 1.7; margin-bottom: 12px; }
   .example-box { background: #f9fafb; border-radius: 8px; padding: 8px 12px; font-size: 13px; margin-bottom: 8px; }
   .example-box pre { margin: 4px 0 0; font-family: monospace; white-space: pre-wrap; }
 
+  /* 2단 분할 레이아웃 */
+  .prob-layout { display: flex; flex-direction: column; gap: 0; }
+  .prob-left  { flex: 1; }
+  .prob-right { flex: 1; display: flex; flex-direction: column; }
+
   .editor-label { font-weight: 600; color: #374151; display: block; margin: 16px 0 6px; }
-  #code-editor { width: 100%; min-height: 200px; background: #1e1e2e; color: #cdd6f4; font-family: 'Fira Mono', 'Consolas', monospace; font-size: 14px; border: 1.5px solid #45475a; border-radius: 8px; padding: 12px 14px; resize: vertical; outline: none; line-height: 1.6; white-space: pre; overflow-wrap: normal; overflow-x: auto; }
+  #code-editor { width: 100%; background: #1e1e2e; color: #cdd6f4; font-family: 'Fira Mono','Consolas',monospace; font-size: 14px; border: 1.5px solid #45475a; border-radius: 8px; padding: 12px 14px; outline: none; line-height: 1.6; white-space: pre; overflow-wrap: normal; overflow-x: auto; resize: vertical; min-height: 200px; flex: 1; }
   .action-row { display: flex; gap: 10px; margin-top: 12px; }
   .action-row .btn { flex: 1; padding: 11px 0; font-size: 15px; }
+
+  /* 넓은 화면에서 좌우 분할 */
+  @media (min-width: 900px) {
+    #screen-problem { max-width: 100%; }
+    main { max-width: 1200px; }
+    .prob-card { padding: 24px; }
+    .prob-layout { flex-direction: row; gap: 24px; align-items: stretch; }
+    .prob-left  { flex: 1; min-width: 0; border-right: 1.5px solid #e5e7eb; padding-right: 24px; }
+    .prob-right { flex: 1; min-width: 0; padding-top: 0; }
+    .editor-label { margin-top: 0; }
+    #code-editor { min-height: 320px; height: 100%; }
+  }
 
   .run-result { margin-top: 14px; border-radius: 8px; padding: 12px 16px; }
   .run-result.success { background: #f0f9ff; border: 1.5px solid #7dd3fc; }
@@ -340,18 +358,24 @@ function renderProblem() {
         <span class="prob-title">📝 ${p.title}</span>
         <span class="prob-count">#${probCount}번째 문제</span>
       </div>
-      <p class="prob-desc">${p.description}</p>
-      ${exIn}${exOut}
-      <label class="editor-label">💻 내 코드 작성</label>
-      <textarea id="code-editor" spellcheck="false">${DEFAULT_CODE}</textarea>
-      <div class="action-row">
-        <button class="btn btn-blue" id="btn-run">▶ 실행하기</button>
-        <button class="btn btn-green" id="btn-submit">🚀 제출하기</button>
+      <div class="prob-layout">
+        <div class="prob-left">
+          <p class="prob-desc">${p.description}</p>
+          ${exIn}${exOut}
+          <div id="run-result-area"></div>
+          <div id="feedback-area"></div>
+          <div id="hint-area"></div>
+          <div id="answer-area"></div>
+        </div>
+        <div class="prob-right">
+          <label class="editor-label">💻 내 코드 작성</label>
+          <textarea id="code-editor" spellcheck="false">${DEFAULT_CODE}</textarea>
+          <div class="action-row">
+            <button class="btn btn-blue" id="btn-run">▶ 실행하기</button>
+            <button class="btn btn-green" id="btn-submit">🚀 제출하기</button>
+          </div>
+        </div>
       </div>
-      <div id="run-result-area"></div>
-      <div id="feedback-area"></div>
-      <div id="hint-area"></div>
-      <div id="answer-area"></div>
     </div>`;
 
   document.getElementById("code-editor").addEventListener("keydown", e => {
