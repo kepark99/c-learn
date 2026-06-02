@@ -379,11 +379,28 @@ function renderProblem() {
     </div>`;
 
   document.getElementById("code-editor").addEventListener("keydown", e => {
-    if (e.key !== "Tab") return;
-    e.preventDefault();
     const el = e.target, s = el.selectionStart, en = el.selectionEnd;
-    el.value = el.value.substring(0,s) + "    " + el.value.substring(en);
-    el.selectionStart = el.selectionEnd = s + 4;
+    const val = el.value;
+
+    if (e.key === "Tab") {
+      e.preventDefault();
+      el.value = val.substring(0,s) + "    " + val.substring(en);
+      el.selectionStart = el.selectionEnd = s + 4;
+      return;
+    }
+
+    if (e.key === "Enter") {
+      e.preventDefault();
+      // 현재 줄의 앞쪽 공백 파악
+      const lineStart = val.lastIndexOf("\n", s - 1) + 1;
+      const currentLine = val.substring(lineStart, s);
+      const indent = currentLine.match(/^(\s*)/)[1];
+      // 줄 끝이 { 이면 들여쓰기 추가
+      const extraIndent = currentLine.trimEnd().endsWith("{") ? "    " : "";
+      const insert = "\n" + indent + extraIndent;
+      el.value = val.substring(0, s) + insert + val.substring(en);
+      el.selectionStart = el.selectionEnd = s + insert.length;
+    }
   });
   document.getElementById("btn-run").onclick = handleRun;
   document.getElementById("btn-submit").onclick = handleSubmit;
@@ -608,6 +625,9 @@ document.getElementById("input-custom").addEventListener("keydown", e => {
 });
 document.getElementById("btn-home").onclick = () => showScreen("screen-topic");
 document.getElementById("btn-wrongnote").onclick = renderWrongNote;
+document.addEventListener("click", e => {
+  if (e.target && e.target.id === "btn-change-topic") showScreen("screen-topic");
+});
 document.getElementById("btn-clear-all").onclick = () => {
   if (!confirm("오답 노트를 모두 삭제할까요?")) return;
   saveNotes([]);
